@@ -9,10 +9,13 @@ const movieURL = 'https://www.imdb.com/title/';
 // const $ = cherio.load(tex);
 // console.log($('#fruits').find('li').length);
 
+// Used for cahcing to avoid multiple request to imdb site
+
 const movieCache = {};
 const SearchCache = {};
 
 function searchMovies(searchTerm) {
+    
     if(SearchCache[searchTerm]) {
         console.log('Serving from cache...', searchTerm);
         return Promise.resolve(SearchCache[searchTerm]);
